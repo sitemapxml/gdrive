@@ -1,3 +1,4 @@
+> Skripta je u fazi testiranja. Može doći do grešaka pri preuzimanju fajlova (oštećeni fajlovi i sl.)
 # gdrive
  Skripta za preuzimanje fajlova sa google drive servisa
 
