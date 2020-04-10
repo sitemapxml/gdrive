@@ -1,0 +1,10 @@
+#!/bin/bash
+
+read -p 'Unesite adresu za preuzimanje: ' download_url
+read -p 'Unesite naziv fajla sa ekstenzijom: ' filename
+
+
+fileid=$(echo $filename | cut -d "=" -f2)
+curl -c ./cookie -s -L "https://drive.google.com/open?id=${fileid}" > /dev/null
+curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
+echo 'Preuzimanje je završeno!'
