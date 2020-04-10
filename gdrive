@@ -6,11 +6,12 @@ GREEN='\033[0;32m'
 # Reset boja
 NC='\033[0m'
 
-read -p 'Unesite adresu za preuzimanje: ' download_url
+# read -p 'Unesite adresu za preuzimanje: ' download_url
+read -p 'Unesite file ID: ' fileid
 read -p 'Unesite naziv fajla sa ekstenzijom: ' filename
 
 
-fileid=$(echo $download_url | cut -d "=" -f2)
+# fileid=$(echo $download_url | cut -d "=" -f2)
 curl -c ./cookie -s -L "https://drive.google.com/open?id=${fileid}" > /dev/null
 curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
 echo -e ${GREEN}"Preuzimanje fajla $filename je završeno!"${NC}
